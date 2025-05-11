@@ -112,6 +112,37 @@ $env:MYSQL_HOST="localhost"; $env:MYSQL_PORT="3306"; $env:MYSQL_USER="root"; $en
 }
 ```
 
+```bash
+# Cursor
+# First： pip install mcp-chat-insight
+{
+    "mcpServers":
+    {
+        "mcp-chat-insight":
+        {
+            "command": "uv",
+            "args":
+            [
+                "run",
+                "mcp-chat-insight",
+                "--table",
+                "test1.wx_record,test2.wx_record",
+                "--mapping",
+                "chat_data.group_messages",
+                "--debug"
+            ],
+            "env":
+            {
+                "MYSQL_HOST": "localhost",
+                "MYSQL_PORT": "3306",
+                "MYSQL_USER": "root",
+                "MYSQL_PASSWORD": "123456"
+            }
+        }
+    }
+}
+```
+
 ### Docker
 
 ```json
