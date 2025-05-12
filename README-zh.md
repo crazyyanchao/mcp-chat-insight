@@ -141,6 +141,12 @@ $env:MYSQL_HOST="localhost"; $env:MYSQL_PORT="3306"; $env:MYSQL_USER="root"; $en
         }
     }
 }
+# Cursor Remote
+{
+    "mcp-chat-insight": {
+        "url": "http://localhost:8000/mcp-chat-insight/sse"
+    }
+}
 ```
 
 ### Docker
