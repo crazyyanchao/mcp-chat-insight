@@ -58,7 +58,7 @@ MCP WX Insight Server 是一个用于数据分析的 MCP 服务器。通过 MySQ
 ### SSE
 ```bash
 # 启动命令
-$env:MYSQL_HOST="localhost"; $env:MYSQL_PORT="3306"; $env:MYSQL_USER="root"; $env:MYSQL_PASSWORD="123456"; uv run mcp-chat-insight --table "test1.wx_record,test2.wx_record" --desc "微信群聊消息" --mapping "chat_data.group_messages" --transport "sse" --port 8000 --sse_path "/mcp-chat-insight/sse" --debug
+$env:MYSQL_HOST="localhost"; $env:MYSQL_PORT="3306"; $env:MYSQL_USER="root"; $env:MYSQL_PASSWORD="123456"; uv run mcp-chat-insight --table "test1.wx_record,test2.wx_record" --desc "微信群聊消息" --mapping "chat_data.group_messages" --transport "sse" --port 8000 --sse_path "/mcp-chat-insight/sse" --message_path "/mcp-chat-insight/messages/" --debug
 # 在桌面端配置
 {
     "mcp-chat-insight":
@@ -196,7 +196,7 @@ uv run mcp-chat-insight
 ```bash
 $env:MYSQL_HOST="localhost"; $env:MYSQL_PORT="3306"; $env:MYSQL_USER="root"; $env:MYSQL_PASSWORD="123456"; uv run mcp-chat-insight --table 'test1.wx_record,test2.wx_record' --desc "微信群聊消息" --mapping "chat_data.group_messages" --debug
 
-$env:MYSQL_HOST="localhost"; $env:MYSQL_PORT="3306"; $env:MYSQL_USER="root"; $env:MYSQL_PASSWORD="123456"; uv run mcp-chat-insight --table 'test1.wx_record,test2.wx_record' --desc "微信群聊消息" --mapping "chat_data.group_messages" --transport "sse" --port 8000 --sse_path "/mcp-chat-insight/sse" --debug # http://localhost:8000/mcp-chat-insight/sse
+$env:MYSQL_HOST="localhost"; $env:MYSQL_PORT="3306"; $env:MYSQL_USER="root"; $env:MYSQL_PASSWORD="123456"; uv run mcp-chat-insight --table 'test1.wx_record,test2.wx_record' --desc "微信群聊消息" --mapping "chat_data.group_messages" --transport "sse" --port 8000 --sse_path "/mcp-chat-insight/sse" --message_path "/mcp-chat-insight/messages/" --debug # http://localhost:8000/mcp-chat-insight/sse
 ```
 
 ### 打包发布

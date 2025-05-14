@@ -156,13 +156,13 @@ class DatabaseManager:
 
 
 class ChatInsightServer:
-    def __init__(self, db_manager: DatabaseManager, table_names: List[str], desc: str = "", mapping: str = "chat_db.group_messages", sse_path: str = "/mcp-chat-insight/sse"):
+    def __init__(self, db_manager: DatabaseManager, table_names: List[str], desc: str = "", mapping: str = "chat_db.group_messages", sse_path: str = "/mcp-chat-insight/sse", message_path: str = ""):
         self.table_names = table_names # [db1.table,db2.table...] 格式
         self.mapping = mapping
         self.desc = desc
         self.db_manager = db_manager
-        
-        self.mcp = FastMCP(name="mcp-chat-insight", sse_path=sse_path)
+        self.message_path = message_path
+        self.mcp = FastMCP(name="mcp-chat-insight", sse_path=sse_path, message_path=message_path)
         self._register_tools()
 
     def _register_tools(self):
@@ -264,11 +264,11 @@ class ChatInsightServer:
             # 清理数据库连接
             await self.db_manager.close()
 
-async def main(table_names: List[str], desc: str = "chat_db.group_messages", mapping: str = "", transport: str = "stdio", port: int = 8000, sse_path: str = "/mcp-chat-insight/sse"):
+async def main(table_names: List[str], desc: str = "chat_db.group_messages", mapping: str = "", transport: str = "stdio", port: int = 8000, sse_path: str = "/mcp-chat-insight/sse", message_path: str = "/mcp-chat-insight/messages/"):
     """服务器的主入口点。"""
     db_manager = DatabaseManager(table_names,mapping,desc)
     await db_manager()
-    server = ChatInsightServer(db_manager, table_names, desc, mapping, sse_path)
+    server = ChatInsightServer(db_manager, table_names, desc, mapping, sse_path, message_path)
     await server.start(transport, port)
 
 if __name__ == "__main__":

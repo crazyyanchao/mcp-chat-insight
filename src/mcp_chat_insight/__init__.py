@@ -191,8 +191,15 @@ def main():
     parser.add_argument(
         '--sse_path',
         type=str,
-        default='/mcp-wx-chatinsight/sse',
+        default='/mcp-chat-insight/sse',
         help='SSE端点路径（默认：/mcp-wx-chatinsight/sse）'
+    )
+
+    parser.add_argument(
+        '--message_path',
+        type=str,
+        default="/mcp-chat-insight/messages/",
+        help='消息端点路径（可选，默认为空）'
     )
 
     try:
@@ -234,7 +241,8 @@ def main():
             transport=args.transport,
             port=args.port,
             sse_path=args.sse_path,
-            mapping=mapping_name
+            mapping=mapping_name,
+            message_path=args.message_path
         ))
         
     except ValueError as e:
