@@ -58,7 +58,7 @@ The server provides a dynamic resource:
 ### SSE
 ```bash
 # Startup command
-$env:MYSQL_HOST="localhost"; $env:MYSQL_PORT="3306"; $env:MYSQL_USER="root"; $env:MYSQL_PASSWORD="123456"; uv run mcp-chat-insight --table "test1.wx_record,test2.wx_record" --desc "Group chat messages" --mapping "chat_data.group_messages" --transport "sse" --port 8000 --sse_path "/mcp-chat-insight/sse" --debug
+$env:MYSQL_HOST="localhost"; $env:MYSQL_PORT="3306"; $env:MYSQL_USER="root"; $env:MYSQL_PASSWORD="123456"; uv run mcp-chat-insight --table "test1.wx_record,test2.wx_record" --desc "Group chat messages" --mapping "chat_data.group_messages" --transport "sse" --port 8000 --sse_path "/mcp-chat-insight/sse" --message_path "/mcp-chat-insight/messages/" --debug
 # Desktop configuration
 {
     "mcp-chat-insight":
@@ -196,7 +196,7 @@ uv run mcp-chat-insight
 ```bash
 $env:MYSQL_HOST="localhost"; $env:MYSQL_PORT="3306"; $env:MYSQL_USER="root"; $env:MYSQL_PASSWORD="123456"; uv run mcp-chat-insight --table 'test1.wx_record,test2.wx_record' --desc "Group chat messages" --mapping "chat_data.group_messages" --debug
 
-$env:MYSQL_HOST="localhost"; $env:MYSQL_PORT="3306"; $env:MYSQL_USER="root"; $env:MYSQL_PASSWORD="123456"; uv run mcp-chat-insight --table 'test1.wx_record,test2.wx_record' --desc "Group chat messages" --mapping "chat_data.group_messages" --transport "sse" --port 8000 --sse_path "/mcp-chat-insight/sse" --debug # http://localhost:8000/mcp-chat-insight/sse
+$env:MYSQL_HOST="localhost"; $env:MYSQL_PORT="3306"; $env:MYSQL_USER="root"; $env:MYSQL_PASSWORD="123456"; uv run mcp-chat-insight --table 'test1.wx_record,test2.wx_record' --desc "Group chat messages" --mapping "chat_data.group_messages" --transport "sse" --port 8000 --sse_path "/mcp-chat-insight/sse" --message_path "/mcp-chat-insight/messages/" --debug # http://localhost:8000/mcp-chat-insight/sse
 ```
 
 ### Packaging & Release
